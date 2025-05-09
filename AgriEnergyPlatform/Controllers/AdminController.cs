@@ -17,11 +17,17 @@ public class AdminController : Controller
     {
         _context = context;
     }
+    
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+    
 
     public IActionResult Index()
     {
-        var users = _context.Users.ToList();
-        return View(users);
+        var peoples = _context.Peoples.ToList();
+        return View(peoples);
     }
 
     public IActionResult ManageProducts()

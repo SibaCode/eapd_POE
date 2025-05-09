@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "eLv7bnEWZB1/eb6nlZRsnOkcuehJ4hAb3qXg/Z7PMQa6SA05Hg66GcwmYhDk9TGcIvclKskRHCMPvw8rr5TAmA==",
+  "dgSpecHash": "ivHYIYp1XmPGOESwpoO8hJQg22x3Rd/bl79aLygxdvRFkMGc0JpKsGB62KBf1xb4lkQuveo0ig4l1ATsiF0wnQ==",
   "success": true,
   "projectFilePath": "/home/sibahle/Pictures/eapd_POE/AgriEnergyPlatform/AgriEnergyPlatform.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "/home/sibahle/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",
     "/home/sibahle/.nuget/packages/azure.storage.blobs/12.24.0/azure.storage.blobs.12.24.0.nupkg.sha512",
     "/home/sibahle/.nuget/packages/azure.storage.common/12.23.0/azure.storage.common.12.23.0.nupkg.sha512",
+    "/home/sibahle/.nuget/packages/bcrypt.net-next/4.0.2/bcrypt.net-next.4.0.2.nupkg.sha512",
     "/home/sibahle/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/sibahle/.nuget/packages/microsoft.bcl.asyncinterfaces/7.0.0/microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "/home/sibahle/.nuget/packages/microsoft.build.framework/17.8.3/microsoft.build.framework.17.8.3.nupkg.sha512",

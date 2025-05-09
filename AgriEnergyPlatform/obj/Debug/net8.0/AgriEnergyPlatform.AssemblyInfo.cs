@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AgriEnergyPlatform")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1a97d482c6856fa586bac85d0e15a8257c54ea05")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a4d49606304a94c1ebd2defc5df900ff630ea4f0")]
 [assembly: System.Reflection.AssemblyProductAttribute("AgriEnergyPlatform")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AgriEnergyPlatform")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

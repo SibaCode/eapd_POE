@@ -170,3 +170,4 @@
 /home/sibahle/Pictures/eapd_POE/AgriEnergyPlatform/obj/Debug/net8.0/AgriEnergyPlatform.pdb
 /home/sibahle/Pictures/eapd_POE/AgriEnergyPlatform/obj/Debug/net8.0/AgriEnergyPlatform.genruntimeconfig.cache
 /home/sibahle/Pictures/eapd_POE/AgriEnergyPlatform/obj/Debug/net8.0/ref/AgriEnergyPlatform.dll
+/home/sibahle/Pictures/eapd_POE/AgriEnergyPlatform/bin/Debug/net8.0/BCrypt.Net-Next.dll
