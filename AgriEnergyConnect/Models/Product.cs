@@ -1,3 +1,11 @@
+
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using AgriEnergyConnect.Models;
+
+namespace AgriEnergyConnect.Models
+
+{
 public class Product
 {
     public int Id { get; set; }
@@ -10,3 +18,5 @@ public class Product
     public string SellerId { get; set; }
     public ApplicationUser Seller { get; set; }
 }
+}
+

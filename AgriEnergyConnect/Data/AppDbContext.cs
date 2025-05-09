@@ -1,18 +1,23 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-
-using AgriEnergyConnect.Models;
+using Microsoft.EntityFrameworkCore;
+using AgriEnergyConnect.Models; // Adjust according to your project's structure
 
 namespace AgriEnergyConnect.Data
 {
-    public class AppDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+public class AppDbContext : IdentityDbContext<ApplicationUser>
+{
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        // Add your DbSets here
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Project> Projects { get; set; }
-        public DbSet<Resource> Resources { get; set; }
+    public DbSet<Product> Products { get; set; } // assuming you have a Product entity
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        // Configure Price property for Product entity
+        modelBuilder.Entity<Product>()
+            .Property(p => p.Price)
+            .HasPrecision(18, 2);  // Specifies 18 digits in total, with 2 digits after the decimal point
     }
+}
 }
