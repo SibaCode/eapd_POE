@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using AgriEnergyPlatform.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AgriEnergyPlatform.Controllers;
 

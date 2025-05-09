@@ -3,11 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using AgriEnergyPlatform.Models;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+
 using AgriEnergyPlatform.Data;  // Replace with your project namespace
 
 
 namespace AgriEnergyConnect.Controllers
 {
+[Authorize(Roles = "Admin")]
 
 public class AdminController : Controller
 {

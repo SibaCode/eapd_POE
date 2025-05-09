@@ -26,12 +26,24 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /home/sibahle/Pictures/eapd_POE/AgriEnergyPlatform
 build_property._RazorSourceGeneratorDebug = 
 
+[/home/sibahle/Pictures/eapd_POE/AgriEnergyPlatform/Views/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9BY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/sibahle/Pictures/eapd_POE/AgriEnergyPlatform/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/sibahle/Pictures/eapd_POE/AgriEnergyPlatform/Views/Admin/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/sibahle/Pictures/eapd_POE/AgriEnergyPlatform/Views/Expert/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhwZXJ0L0Rhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/sibahle/Pictures/eapd_POE/AgriEnergyPlatform/Views/Farmer/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRmFybWVyL0Rhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/sibahle/Pictures/eapd_POE/AgriEnergyPlatform/Views/Home/Index.cshtml]
@@ -48,6 +60,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/sibahle/Pictures/eapd_POE/AgriEnergyPlatform/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/sibahle/Pictures/eapd_POE/AgriEnergyPlatform/Views/Vendor/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVmVuZG9yL0Rhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/sibahle/Pictures/eapd_POE/AgriEnergyPlatform/Views/_ViewImports.cshtml]

@@ -4,9 +4,11 @@ using AgriEnergyPlatform.Models;
 using System.Threading.Tasks;
 using System.Linq;
 using AgriEnergyPlatform.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AgriEnergyConnect.Controllers
 {
+    [Authorize(Roles = "Expert")]
 public class ExpertController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -16,10 +18,9 @@ public class ExpertController : Controller
         _context = context;
     }
 
-    public IActionResult ManageContent()
+    public IActionResult Dashboard()
     {
-        var content = _context.Contents.ToList();
-        return View(content);
+        return View();
     }
 
     public IActionResult AddContent()

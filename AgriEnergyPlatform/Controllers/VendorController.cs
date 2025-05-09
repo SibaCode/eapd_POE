@@ -4,8 +4,12 @@ using AgriEnergyPlatform.Models;
 using System.Threading.Tasks;
 using System.Linq;
 using AgriEnergyPlatform.Data;
+using Microsoft.AspNetCore.Authorization;
+
 namespace AgriEnergyConnect.Controllers
 {
+        [Authorize(Roles = "Vendor")]
+
 public class VendorController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -15,10 +19,9 @@ public class VendorController : Controller
         _context = context;
     }
 
-    public IActionResult ManageProducts()
+    public IActionResult Dashboard()
     {
-        var products = _context.Products.Where(p => p.VendorId == "VendorId").ToList();
-        return View(products);
+        return View();
     }
 
     public IActionResult AddProduct()
