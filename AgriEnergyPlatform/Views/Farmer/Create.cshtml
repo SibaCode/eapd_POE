@@ -1,0 +1,42 @@
+@model AgriEnergyPlatform.Models.Farm
+
+@{
+    ViewData["Title"] = "Add Farm";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h3>Enter Farm Details</h3>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="FarmName">Farm Name</label>
+        <input asp-for="FarmName" class="form-control" />
+        <span asp-validation-for="FarmName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Location">Location</label>
+        <input asp-for="Location" class="form-control" />
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="FarmDescription">Farm Description</label>
+        <textarea asp-for="FarmDescription" class="form-control"></textarea>
+        <span asp-validation-for="FarmDescription" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="ContactInfo">Contact Info</label>
+        <input asp-for="ContactInfo" class="form-control" />
+        <span asp-validation-for="ContactInfo" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@* Validation and form error messages *@
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

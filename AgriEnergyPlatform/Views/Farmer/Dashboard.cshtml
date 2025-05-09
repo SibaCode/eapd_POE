@@ -1,4 +1,48 @@
 @{
     ViewData["Title"] = "Farmer Dashboard";
 }
-<h2>Welcome, Farmer!</h2>
+
+<div class="container mt-5">
+    <h2>Welcome, @User.Identity.Name!</h2>
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Farming Hub</h5>
+                    <p class="card-text">Access farming resources and tips.</p>
+                    <a href="@Url.Action("Index", "FarmingHub")" class="btn btn-primary">Go to Farming Hub</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Marketplace</h5>
+                    <p class="card-text">Manage your products and sales.</p>
+                    <a href="@Url.Action("Index", "Marketplace")" class="btn btn-primary">Go to Marketplace</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Educational Content</h5>
+                    <p class="card-text">View farming articles and tutorials.</p>
+                    <a href="@Url.Action("Index", "EducationalContent")" class="btn btn-primary">Go to Educational Hub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Edit Profile</h5>
+                    <p class="card-text">Update your farm and personal details.</p>
+                    <a href="@Url.Action("EditProfile", "Farmer")" class="btn btn-primary">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

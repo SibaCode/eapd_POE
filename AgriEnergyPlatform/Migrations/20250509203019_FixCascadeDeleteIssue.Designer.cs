@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgriEnergyPlatform.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250509172939_newTable")]
-    partial class newTable
+    [Migration("20250509203019_FixCascadeDeleteIssue")]
+    partial class FixCascadeDeleteIssue
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,29 +25,38 @@ namespace AgriEnergyPlatform.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("AgriEnergyPlatform.Models.Content", b =>
+            modelBuilder.Entity("AgriEnergyPlatform.Models.Farm", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("FarmId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FarmId"));
 
-                    b.Property<string>("Description")
+                    b.Property<string>("ContactInfo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("FarmDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Type")
+                    b.Property<string>("FarmName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Contents");
+                    b.Property<int>("PeopleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FarmId");
+
+                    b.HasIndex("PeopleId");
+
+                    b.ToTable("Farms");
                 });
 
             modelBuilder.Entity("AgriEnergyPlatform.Models.People", b =>
@@ -94,20 +103,72 @@ namespace AgriEnergyPlatform.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("FarmId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PeopleId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PeopleId1")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("VendorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
+                    b.HasIndex("FarmId");
+
+                    b.HasIndex("PeopleId");
+
+                    b.HasIndex("PeopleId1");
+
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("AgriEnergyPlatform.Models.Farm", b =>
+                {
+                    b.HasOne("AgriEnergyPlatform.Models.People", "People")
+                        .WithMany("Farms")
+                        .HasForeignKey("PeopleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("People");
+                });
+
+            modelBuilder.Entity("AgriEnergyPlatform.Models.Product", b =>
+                {
+                    b.HasOne("AgriEnergyPlatform.Models.Farm", "Farm")
+                        .WithMany()
+                        .HasForeignKey("FarmId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AgriEnergyPlatform.Models.People", "People")
+                        .WithMany()
+                        .HasForeignKey("PeopleId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("AgriEnergyPlatform.Models.People", null)
+                        .WithMany("Products")
+                        .HasForeignKey("PeopleId1");
+
+                    b.Navigation("Farm");
+
+                    b.Navigation("People");
+                });
+
+            modelBuilder.Entity("AgriEnergyPlatform.Models.People", b =>
+                {
+                    b.Navigation("Farms");
+
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }
