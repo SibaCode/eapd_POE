@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgriEnergyConnect.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250511133906_InitialCreateDBTables")]
-    partial class InitialCreateDBTables
+    [Migration("20250511200609_InitialCreateNew")]
+    partial class InitialCreateNew
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,15 +58,15 @@ namespace AgriEnergyConnect.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -87,11 +87,17 @@ namespace AgriEnergyConnect.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("InStock")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Vendor")
+                    b.Property<string>("VendorName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -115,16 +121,17 @@ namespace AgriEnergyConnect.Migrations
                     b.Property<int>("FarmerId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("InStock")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ProductionDate")
-                        .HasColumnType("datetime2");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FarmerId");
 
                     b.ToTable("Products");
                 });
@@ -141,33 +148,20 @@ namespace AgriEnergyConnect.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FileUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Vendor")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("UploadDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("Resources");
-                });
-
-            modelBuilder.Entity("AgriEnergyConnect.Models.Product", b =>
-                {
-                    b.HasOne("AgriEnergyConnect.Models.Farmer", "Farmer")
-                        .WithMany("Products")
-                        .HasForeignKey("FarmerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Farmer");
-                });
-
-            modelBuilder.Entity("AgriEnergyConnect.Models.Farmer", b =>
-                {
-                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

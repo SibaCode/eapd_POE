@@ -5,7 +5,7 @@
 namespace AgriEnergyConnect.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreateDB : Migration
+    public partial class InitialCreateNew : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

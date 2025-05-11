@@ -1,13 +1,10 @@
-using AgriEnergyConnect.Data;
-using AgriEnergyConnect.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using AgriEnergyConnect.Models;
+using AgriEnergyConnect.Data;
 
 namespace AgriEnergyConnect.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductController : Controller
     {
         private readonly AppDbContext _context;
 
@@ -16,97 +13,104 @@ namespace AgriEnergyConnect.Controllers
             _context = context;
         }
 
-        // GET: api/Product
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        // GET: /Product
+        public IActionResult Index()
         {
-            return await _context.Products.ToListAsync();
+            var products = _context.Products.ToList();
+            return View(products);
         }
 
-        // GET: api/Product/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        // GET: /Product/Create
+        public IActionResult Create()
         {
-            var product = await _context.Products.FindAsync(id);
+            return View();
+        }
 
-            if (product == null)
+        // POST: /Product/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Product product)
+        {
+            if (ModelState.IsValid)
             {
-                return NotFound();
+                _context.Products.Add(product);
+                _context.SaveChanges();
+                TempData["SuccessMessage"] = "Product created successfully!";
+                return RedirectToAction(nameof(Index));
             }
 
-            return product;
+            TempData["ErrorMessage"] = "Failed to create product.";
+            return View(product);
         }
 
-        // GET: api/Product/farmer/3
-        [HttpGet("farmer/{farmerId}")]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByFarmer(int farmerId)
+        // GET: /Product/Edit/5
+        public IActionResult Edit(int id)
         {
-            var products = await _context.Products
-                .Where(p => p.FarmerId == farmerId)
-                .ToListAsync();
+            var product = _context.Products.Find(id);
+            if (product == null)
+                return NotFound();
 
-            return products;
+            return View(product);
         }
 
-        // POST: api/Product
+        // POST: /Product/Edit/5
         [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product product)
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, Product updatedProduct)
         {
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
-        }
-
-        // PUT: api/Product/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, Product product)
-        {
-            if (id != product.Id)
+            if (id != updatedProduct.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(product).State = EntityState.Modified;
-
-            try
+            if (ModelState.IsValid)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProductExists(id))
-                {
+                var existingProduct = _context.Products.Find(id);
+                if (existingProduct == null)
                     return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+
+                existingProduct.Name = updatedProduct.Name;
+                existingProduct.Category = updatedProduct.Category;
+                existingProduct.Price = updatedProduct.Price;
+                existingProduct.InStock = updatedProduct.InStock;
+                existingProduct.ProductionDate = updatedProduct.ProductionDate;
+
+                _context.SaveChanges();
+                TempData["SuccessMessage"] = "Product updated successfully!";
+                return RedirectToAction(nameof(Index));
             }
 
-            return NoContent();
+            TempData["ErrorMessage"] = "Failed to update product.";
+            return View(updatedProduct);
         }
 
-        // DELETE: api/Product/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(int id)
+        // GET: /Product/Delete/5
+        public IActionResult Delete(int id)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = _context.Products.Find(id);
             if (product == null)
-            {
                 return NotFound();
-            }
 
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return View(product);
         }
 
-        private bool ProductExists(int id)
-        {
-            return _context.Products.Any(e => e.Id == id);
-        }
+      // POST: /Product/DeleteConfirmed/5
+[HttpPost, ActionName("DeleteConfirmed")]
+[ValidateAntiForgeryToken]
+public IActionResult DeleteConfirmed(int id)
+{
+    var product = _context.Products.Find(id);
+    if (product == null)
+    {
+        return NotFound();
+    }
+
+    _context.Products.Remove(product);
+    _context.SaveChanges();
+
+    TempData["SuccessMessage"] = "Product deleted successfully!";
+    return RedirectToAction(nameof(Index));
+}
+
     }
 }

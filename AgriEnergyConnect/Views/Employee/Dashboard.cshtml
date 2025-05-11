@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h1 class="mb-4">Welcome to AgriEnergy Connect</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Farmers</h5>
+                    <p class="card-text">Manage all registered farmers</p>
+                    <a href="/Farmer/Index" class="btn btn-orange">View Farmers</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-4 mt-md-0">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Employees</h5>
+                    <p class="card-text">View and manage employees</p>
+                    <a href="/Employee/Index" class="btn btn-orange">View Employees</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-4 mt-md-0">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Products</h5>
+                    <p class="card-text">Browse marketplace products</p>
+                    <a href="/Product/Index" class="btn btn-orange">View Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

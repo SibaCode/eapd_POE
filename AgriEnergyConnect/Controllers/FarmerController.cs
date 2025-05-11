@@ -1,13 +1,12 @@
-using AgriEnergyConnect.Data;
-using AgriEnergyConnect.Models;
 using Microsoft.AspNetCore.Mvc;
+using AgriEnergyConnect.Models;
+using AgriEnergyConnect.Data;
 using BCrypt.Net;
+using System.Linq;
 
 namespace AgriEnergyConnect.Controllers
 {
-    [ApiController] // This tells ASP.NET that this is an API controller
-    [Route("api/[controller]")]
-    public class FarmerController : ControllerBase
+    public class FarmerController : Controller
     {
         private readonly AppDbContext _context;
 
@@ -16,31 +15,107 @@ namespace AgriEnergyConnect.Controllers
             _context = context;
         }
 
-        // Farmer registration
-        [HttpPost("register")]
-        public IActionResult Register(Farmer farmer)
+        // GET: /Farmer
+        public IActionResult Index()
         {
-            // Hash the password
-            farmer.Password = BCrypt.Net.BCrypt.HashPassword(farmer.Password);
-
-            // Save the farmer in the database
-            _context.Farmers.Add(farmer);
-            _context.SaveChanges();
-
-            return Ok("Farmer registered successfully.");
+            var farmers = _context.Farmers.ToList();
+            return View(farmers);
         }
 
-        // Farmer login
-        [HttpPost("login")]
-        public IActionResult Login(string email, string password)
+        // GET: /Farmer/Dashboard
+        public IActionResult Dashboard()
         {
-            var farmer = _context.Farmers.FirstOrDefault(f => f.Email == email);
-            if (farmer == null || !BCrypt.Net.BCrypt.Verify(password, farmer.Password))
+            return View();
+        }
+
+        // GET: /Farmer/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: /Farmer/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Farmer farmer)
+        {
+            if (ModelState.IsValid)
             {
-                return Unauthorized("Invalid credentials.");
+                // Hash the password before saving to the database
+                farmer.Password = BCrypt.Net.BCrypt.HashPassword(farmer.Password);
+                _context.Farmers.Add(farmer);
+                _context.SaveChanges();
+                TempData["SuccessMessage"] = "Farmer created successfully!";
+                return RedirectToAction(nameof(Index));
             }
 
-            return Ok("Login successful.");
+            TempData["ErrorMessage"] = "Failed to create farmer.";
+            return View(farmer);
+        }
+
+        // GET: /Farmer/Edit/5
+        public IActionResult Edit(int id)
+        {
+            var farmer = _context.Farmers.Find(id);
+            if (farmer == null)
+                return NotFound();
+
+            var viewModel = new FarmerEditViewModel
+            {
+                Id = farmer.Id,
+                FullName = farmer.FullName,
+                Username = farmer.Username
+            };
+
+            return View(viewModel);
+        }
+
+        // POST: /Farmer/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(FarmerEditViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingFarmer = _context.Farmers.Find(model.Id);
+                if (existingFarmer == null)
+                    return NotFound();
+
+                existingFarmer.FullName = model.FullName;
+                existingFarmer.Username = model.Username;
+
+                _context.SaveChanges();
+                TempData["SuccessMessage"] = "Farmer updated successfully!";
+                return RedirectToAction(nameof(Index));
+            }
+
+            TempData["ErrorMessage"] = "Failed to update farmer.";
+            return View(model);
+        }
+
+        // GET: /Farmer/Delete/5
+        public IActionResult Delete(int id)
+        {
+            var farmer = _context.Farmers.Find(id);
+            if (farmer == null)
+                return NotFound();
+
+            return View(farmer);
+        }
+
+        // POST: /Farmer/DeleteConfirmed/5
+        [HttpPost, ActionName("DeleteConfirmed")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var farmer = _context.Farmers.Find(id);
+            if (farmer == null)
+                return NotFound();
+
+            _context.Farmers.Remove(farmer);
+            _context.SaveChanges();
+            TempData["SuccessMessage"] = "Farmer deleted successfully!";
+            return RedirectToAction(nameof(Index));
         }
     }
 }

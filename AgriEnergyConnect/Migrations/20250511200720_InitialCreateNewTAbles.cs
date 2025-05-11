@@ -5,7 +5,7 @@
 namespace AgriEnergyConnect.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreateDBTables : Migration
+    public partial class InitialCreateNewTAbles : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
