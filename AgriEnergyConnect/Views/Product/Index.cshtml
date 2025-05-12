@@ -2,9 +2,20 @@
 
 @{
     ViewData["Title"] = "Product List";
+    var searchQuery = Context.Request.Query["search"];
 }
 
 <h2>Product List</h2>
+
+<!-- Search Form -->
+<form method="get" class="row mb-4">
+    <div class="col-md-8">
+        <input type="text" name="search" class="form-control" placeholder="Search by product name" value="@searchQuery" />
+    </div>
+    <div class="col-md-4">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
 
 @if (TempData["SuccessMessage"] != null)
 {
@@ -20,18 +31,9 @@
     </div>
 }
 
-@{
-    var farmerUsername = Context.Session.GetString("FarmerUsername");
-}
-
-@if (!string.IsNullOrEmpty(farmerUsername))
+@if (Context.Session.GetString("FarmerUsername") != null)
 {
-    <a href="@Url.Action("Create")" class="btn btn-primary">Create New Product</a>
-}
-else
-{
-    <!-- Optionally display a message or leave this empty -->
-    @* <p>You do not have permission to create products.</p> *@
+    <a href="@Url.Action("Create")" class="btn btn-primary mb-4">Create New Product</a>
 }
 
 <table class="table">
@@ -42,8 +44,7 @@ else
             <th>Price</th>
             <th>In Stock</th>
             <th>Production Date</th>
-            <th> Action </th>
-            
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -53,17 +54,17 @@ else
                 <td>@product.Name</td>
                 <td>@product.Category</td>
                 <td>@product.Price</td>
-                <td>@product.InStock</td>
+                <td>@(product.InStock ? "Yes" : "No")</td>
                 <td>@product.ProductionDate.ToShortDateString()</td>
                 <td>
-                    @if (!string.IsNullOrEmpty(farmerUsername)) // Only show edit/delete for farmers
+                    @if (Context.Session.GetString("FarmerUsername") != null)
                     {
                         <a href="@Url.Action("Edit", new { id = product.Id })" class="btn btn-primary">Edit</a>
                         <a href="@Url.Action("Delete", new { id = product.Id })" class="btn btn-danger">Delete</a>
                     }
                     else
                     {
-                    <td>View only</td>
+                        <span>View only</span>
                     }
                 </td>
             </tr>

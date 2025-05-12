@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using AgriEnergyConnect.Models;
 using AgriEnergyConnect.Data;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace AgriEnergyConnect.Controllers
 {
@@ -13,12 +15,18 @@ namespace AgriEnergyConnect.Controllers
             _context = context;
         }
 
-        // GET: /Product
-        public IActionResult Index()
-        {
-            var products = _context.Products.ToList();
-            return View(products);
-        }
+       public async Task<IActionResult> Index(string search)
+{
+    var products = from p in _context.Products
+                   select p;
+
+    if (!string.IsNullOrEmpty(search))
+    {
+        products = products.Where(p => p.Name.Contains(search));
+    }
+
+    return View(await products.ToListAsync());
+}
 
         // GET: /Product/Create
         public IActionResult Create()

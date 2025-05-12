@@ -6,51 +6,60 @@
 }
 
 <div class="container mt-4">
-    <!-- Welcome Section -->
-    <div class="jumbotron text-white bg-success rounded p-4 mb-4">
-        <h1 class="display-5">Welcome to Agri-Energy Connect</h1>
+    <!-- Welcome Banner -->
+    <div class="jumbotron text-white bg-success rounded p-4 mb-5 shadow-sm">
+        <h1 class="display-5 fw-bold">Welcome to Agri-Energy Connect</h1>
         <p class="lead">Connect. Grow. Sell. Empowering local farmers through digital innovation and sustainable energy practices.</p>
     </div>
 
-    <!-- Action Cards -->
-    <div class="row mb-4">
-        <div class="col-md-6">
-            <div class="card shadow-sm border-0">
+    <!-- Feature Tiles -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm border-0">
                 <div class="card-body">
-                    <h4>Add Your First Product</h4>
-                    <p>Start showcasing your farm's produce to the Agri-Energy community and connect with potential buyers.</p>
-                    <a href="/Product/Create" class="btn btn-primary">+ Add Product</a>
+                    <h5 class="card-title">➕ Add Your Product</h5>
+                    <p class="card-text">Showcase your produce and connect with locak farmers.</p>
+                    <a href="/Product/Create" class="btn btn-success">Add Product</a>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-6 mt-3 mt-md-0">
-            <div class="card shadow-sm border-0">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm border-0">
                 <div class="card-body">
-                    <h4>Update Your Profile</h4>
-                    <p>Keep your information current so buyers and partners can reach out and learn more about your farm.</p>
-                    <a href="/Farmer/EditProfile" class="btn btn-outline-success">Update Profile</a>
+                    <h5 class="card-title">📘 Educational Hub</h5>
+                    <p class="card-text">Access farming tips, market trends, and sustainability guides.</p>
+                    <a class="btn btn-disabled" aria-disabled="true" onclick="return false;">Coming Soon</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">🌾 Visit Marketplace</h5>
+                    <p class="card-text">Browse products from other farmers in your network.</p>
+                    <a  class="btn btn-disabled" aria-disabled="true" onclick="return false;">Coming Soon</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Optional: Marketplace -->
-    <div class="row">
-        <div class="col">
-            <h3>Marketplace – Products from Other Farmers</h3>
-            <div class="list-group">
-                @foreach (var product in allProducts)
-                {
-                    <div class="list-group-item">
-                        <h5>@product.Name</h5>
-                        <p>Category: @product.Category</p>
-                        <p>Price: R @product.Price</p>
-                        <p>Available: @(product.InStock ? "Yes" : "No")</p>
-                        <p><small>Produced on: @product.ProductionDate.ToShortDateString()</small></p>
+    <!-- Marketplace Section -->
+    <h3 id="marketplace" class="mb-4 text-dark">🌾 Explore Products from Local Farmers</h3>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var product in allProducts)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-success fw-semibold">@product.Name</h5>
+                        <p class="mb-1"><strong>Category:</strong> @product.Category</p>
+                        <p class="mb-1"><strong>Price:</strong> R @product.Price</p>
+                        <p class="mb-1"><strong>Available:</strong> @(product.InStock ? "✅ In Stock" : "❌ Out of Stock")</p>
+                        <p class="text-muted"><small>Produced on: @product.ProductionDate.ToShortDateString()</small></p>
                     </div>
-                }
+                </div>
             </div>
-        </div>
+        }
     </div>
 </div>

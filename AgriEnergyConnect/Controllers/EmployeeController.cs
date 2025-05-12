@@ -81,37 +81,41 @@ namespace AgriEnergyConnect.Controllers
             return View(employee);
         }
 
-       public IActionResult Dashboard()
+      [HttpGet]
+public IActionResult Dashboard(string categoryFilter = null, bool? inStockFilter = null)
 {
-    // Retrieve the username or full name from the session
     var username = HttpContext.Session.GetString("Username");
     var fullName = HttpContext.Session.GetString("FullName");
 
-    // Check if username exists
     if (string.IsNullOrEmpty(username))
-    {
-        // Handle case when session is empty or invalid
         return RedirectToAction("Login", "Employee");
-    }
 
-    // Retrieve employee details from the database
     var employee = _context.Employees.FirstOrDefault(e => e.Username == username);
     if (employee == null)
-    {
-        // Handle case if employee is not found
         return RedirectToAction("Login", "Employee");
-    }
 
-    // Create the DashboardViewModel and pass it to the view
+    // Filter products
+    var productsQuery = _context.Products.AsQueryable();
+
+    if (!string.IsNullOrEmpty(categoryFilter))
+        productsQuery = productsQuery.Where(p => p.Category == categoryFilter);
+
+    if (inStockFilter.HasValue)
+        productsQuery = productsQuery.Where(p => p.InStock == inStockFilter.Value);
+
     var dashboardData = new DashboardViewModel
     {
         TotalFarmers = _context.Farmers.Count(),
         TotalProducts = _context.Products.Count(),
-        LoggedInEmployeeName = fullName ?? employee.FullName // Use full name from session if available, else fallback to DB
+        LoggedInEmployeeName = fullName ?? employee.FullName,
+        CategoryFilter = categoryFilter,
+        InStockFilter = inStockFilter,
+        FilteredProducts = productsQuery.ToList()
     };
 
     return View(dashboardData);
 }
+
 
 
 
