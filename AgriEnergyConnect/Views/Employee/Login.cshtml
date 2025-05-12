@@ -3,10 +3,15 @@
 @{
     ViewData["Title"] = "Login";
 }
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["HideNavbar"] = true;
+}
 
 <h2>Employee Login</h2>
-
+ 
 <form asp-action="Login" method="post">
+
     <div class="form-group">
         <label asp-for="Username"></label>
         <input asp-for="Username" class="form-control" />
@@ -18,4 +23,8 @@
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
+     @if (!ViewData.ModelState.IsValid && ViewData.ModelState[string.Empty] != null)
+    {
+        <span class="text-danger mt-2 d-block">@ViewData.ModelState[string.Empty].Errors.First().ErrorMessage</span>
+    }
 </form>

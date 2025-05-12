@@ -29,8 +29,7 @@ namespace AgriEnergyConnect.Controllers
         {
             if (ModelState.IsValid)
             {
-                var employee = _context.Employees
-                                    .FirstOrDefault(e => e.Username == model.Username);
+                var employee = _context.Employees.FirstOrDefault(e => e.Username == model.Username);
 
                 if (employee != null && BCrypt.Net.BCrypt.Verify(model.Password, employee.PasswordHash))
                 {
@@ -42,9 +41,12 @@ namespace AgriEnergyConnect.Controllers
 
                     // Redirect to the Dashboard
                     return RedirectToAction("Dashboard", "Employee");
+                } else{
+                ModelState.AddModelError(string.Empty, "Invalid username or password.");
+
+
                 }
 
-                ModelState.AddModelError(string.Empty, "Invalid username or password.");
             }
 
             return View(model); // Return the view with error if credentials are invalid

@@ -82,15 +82,21 @@ input[type="submit"], .btn {
 input[type="submit"]:hover, .btn:hover {
   background-color: #d45b00;
 }
-
+.alert {
+  position: relative;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
 .alert-success {
   background-color: #000000;
   color: #ffffff;
 }
 
 .alert-danger {
-  background-color: #FF6A13;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #FF6A13;
 }
 
 .navbar {

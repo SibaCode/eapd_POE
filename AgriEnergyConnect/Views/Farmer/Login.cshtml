@@ -2,6 +2,10 @@
 @{
     ViewData["Title"] = "Login";
 }
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["HideNavbar"] = true;
+}
 
 <h2>Farmer Login</h2>
 
@@ -17,4 +21,8 @@
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
+      @if (!ViewData.ModelState.IsValid && ViewData.ModelState[string.Empty] != null)
+    {
+        <span class="text-danger mt-2 d-block">@ViewData.ModelState[string.Empty].Errors.First().ErrorMessage</span>
+    }
 </form>
