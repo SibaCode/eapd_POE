@@ -1,88 +1,104 @@
 
-# 🌿 Agri-Energy Connect: Empowering Farmers Through Technology
-
-Agri-Energy Connect is a **prototype platform** built with **ASP.NET Core MVC** and C#. It helps:
-
-
----
-Pre-added Credentials
-Farmer
----
-| Username          | Password |
-|-------------------|-------------|
-| Farmer1           | F@rmer1 |
-
-Employee
------
-| Username          | Password |
-|-------------------|-------------|
-| Admin1           | @admin |
+## 📸 I have deployed the website
 
 Link :
 📌 Website : [github.com/zuzakuhle](https://github.com/your-profile)
-📌 GitHub: [click here ]([https://github.com/your-profile](https://github.com/SibaCode/eapd_POE/tree/main))
+📌 GitHub : [click here](https://github.com/SibaCode/eapd_POE)
 
-## 👤 User Roles and What They Can Do
+📌 GitHub: (https://github.com/SibaCode/eapd_POE)
 
-### 🧑‍🌾 Farmer
+# Agri-Energy Connect - README
 
-| Action                                        | Description |
-|-----------------------------------------------|-------------|
-| Login - using pre-added credentials           | Securely access their dashboard. |
-| Add Product                                   | Upload new agricultural items for visibility. |
-| Edit/Delete Product                           | Manage only their own listings. |
-| View Other Products                           | Browse offerings from fellow farmers. |
+## Overview
 
-> 🔐 Farmers cannot see or manage products submitted by others beyond viewing them.
+Agri-Energy Connect is a platform designed to empower local farmers by allowing them to list their products and connect with other farmers. The system has two main user roles: **Farmer** and **Employee**.
+
+- **Farmers** can log in to manage their products, add new ones, and explore other farmers' offerings.
+- **Employees** (admin users) have the ability to manage farmers and products, and filter products by name or category.
 
 ---
 
-### 🧑‍💼 Employee (Coming Soon / For Extension)
+## User Credentials
 
-| Action                        | Description |
-|-------------------------------|-------------|
-| Login                         | Access to internal employee dashboard. |
-| View All Products             | View all products submitted by farmers. |
-| Create new farmer credentials | Register and provide login details. |
-| Submit to Marketplace         | Publish verified listings to wider networks. |
+### Farmer Login
+Farmers can log in to the platform with the following credentials:
 
-> 🔒 Employees have different access logic and are authenticated using a separate login path.
+| **Username** | **Password** |
+|--------------|--------------|
+| Farmer1      | F@rmer1      |
 
----
+Once logged in, farmers can:
+- Add their products
+- View products from other farmers in the marketplace
 
-## ⚙️ System Functionalities Overview
+### Employee Login
+Employees can log in with the following credentials:
 
-The system offers the following core features:
+| **Username** | **Password** |
+|--------------|--------------|
+| Admin1       | @admin       |
 
-- **Secure Farmer Registration & Login**
-- **Session-based role access**
-- **Product Creation** (name, price, category, stock status, production date)
-- **Farmer Dashboard** – See your products + explore others
-- **Role-based permissions** to limit access based on login type
-- **Educational & Marketplace Sections** (Coming soon)
-
----
-
-## 🛠 Step-by-Step Development Setup
-
-### ✅ Prerequisites
-
-You must have the following installed:
-
-- [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download)
-- [Visual Studio 2022](https://visualstudio.microsoft.com/) or VS Code
-- [SQL Server or LocalDB](https://docs.microsoft.com/en-us/sql/database-engine/)
-- [Git](https://git-scm.com/) for cloning the repository
+Once logged in, employees can:
+- Add, edit, and delete farmer profiles
+- View all products listed by farmers
+- Filter products by name or category
 
 ---
 
-### 🧪 1. Clone the Project
+## Features
 
-```bash
-git clone https://github.com/your-username/agri-energy-connect.git
-cd agri-energy-connect
-```
+### Farmer Dashboard
+When a **Farmer** logs in, they are presented with a dashboard that includes:
+- **Add Product**: A button to add their produce to the platform.
+- **Products**: A section where they can view products listed by other farmers.
+  
+Farmers can list products such as fruits, vegetables, or other agricultural produce with the following information:
+- **Name**: The product's name.
+- **Category**: The product category (e.g., fruits, vegetables).
+- **Price**: The price of the product.
+- **Stock Availability**: Whether the product is in stock or out of stock.
+- **Production Date**: When the product was harvested.
 
+### Employee Dashboard
+When an **Employee** logs in, they are provided with an admin dashboard where they can:
+- **Manage Farmers**: Add, edit, or delete farmer profiles.
+- **View Products**: Access all products listed by farmers, filterable by **name** or **category**.
+
+### Marketplace
+- Farmers and employees alike can view products from other farmers in the marketplace. Products are displayed with relevant details such as price, category, and availability.
+
+---
+
+## System Workflow
+
+1. **Farmer Login**:
+    - Farmer enters their credentials (e.g., `Farmer1` / `F@rmer1`).
+    - Once logged in, they can manage their products and see other farmers' products in the marketplace.
+    
+2. **Employee Login**:
+    - Employee logs in using credentials (e.g., `Admin1` / `@admin`).
+    - Employees can manage the farmer database (add/edit/delete) and filter/view all listed products.
+
+---
+
+## Setting Up the Development Environment
+
+### Prerequisites
+
+Before running the system, you must have the following installed:
+- .NET SDK (version 5.0 or higher)
+- Visual Studio or Visual Studio Code (with C# extension)
+- SQL Server (or use Azure SQL for a remote database setup)
+- Git (for version control)
+
+### Instructions
+
+1. **Clone the Repository**
+
+   Clone the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/SibaCode/eapd_POE.git
 ---
 
 ### ⚙️ 2. Configure Database
@@ -160,67 +176,3 @@ if (string.IsNullOrEmpty(farmerUsername))
 - This prevents unauthorized access and ensures **role-based logic** (Farmer vs Employee).
 
 ---
-
-## 🧭 How the System Works
-
-### 👨‍🌾 Farmer Side – Full Flow
-
-1. **Pre-registered **
-   - Get pre-added credentials - username, full name, password from the admin
-   - Password is securely hashed.
-   - Separate login path (`/Farmer/Login`)
-
-2. **Login**
-   - Verified credentials start a session.
-   - Session grants access to the Farmer Dashboard.
-
-3. **Dashboard Features**
-   - See welcome banner and UI tiles.
-   - Button to "Add Product" (Create View)
-   - List of **all other farmer products** shown below (view only)
-
-4. **Add/Edit/Delete Products**
-   - Add your own items via the form.
-   - Only **your own** products will show edit/delete options.
-   - Products must include:
-     - Name
-     - Category
-     - Price
-     - Production Date
-     - In Stock or Not
-
-5. **Logout**
-   - Session ends. Farmer is redirected to login if trying to return.
-
----
-
-### 👩‍💼 Employee Side – Future Implementation (Optional)
-
-1. **Employee Register and Login**
-   - Using username/passwords.
-   - Separate login path (`/Employee/Login`).
-
-2. **View Dashboard**
-   - See **all submitted products** across all farmers.
-
-3. **Create  and manage new farmers**
-   - Using name and password..
-
-
-
----
-
-## 📸 I have deployed the website
-
-- Logging in as Farmer
-- Adding a product
-- Browsing products from others
-- Role-based restrictions (cannot edit/delete other products)
-- Logging out and being redirected to login screen
-
----
-
-
----
-
-*Agri-Energy Connect – Bridging the gap between sustainable farming and digital innovation.*
