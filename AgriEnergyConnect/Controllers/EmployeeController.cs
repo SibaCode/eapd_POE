@@ -33,13 +33,10 @@ namespace AgriEnergyConnect.Controllers
 
                 if (employee != null && BCrypt.Net.BCrypt.Verify(model.Password, employee.PasswordHash))
                 {
-                    // Store the username in the session or claims
                     HttpContext.Session.SetString("Username", employee.Username);
 
-                    // Optionally, you can store the employee ID or other info
                     HttpContext.Session.SetString("FullName", employee.FullName);
 
-                    // Redirect to the Dashboard
                     return RedirectToAction("Dashboard", "Employee");
                 } else{
                 ModelState.AddModelError(string.Empty, "Invalid username or password.");
@@ -49,7 +46,7 @@ namespace AgriEnergyConnect.Controllers
 
             }
 
-            return View(model); // Return the view with error if credentials are invalid
+            return View(model); 
         }
 
 

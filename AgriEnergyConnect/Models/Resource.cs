@@ -8,7 +8,6 @@ public class Resource
     public string Description { get; set; }
      public DateTime UploadDate { get; set; } = DateTime.UtcNow;
 
-        // Optional: Link to file or resource (can be a PDF, YouTube video, etc.)
         public string FileUrl { get; set; }
 }
 

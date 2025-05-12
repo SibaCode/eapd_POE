@@ -7,7 +7,7 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSession();
-builder.Services.AddDistributedMemoryCache(); // Needed for session
+builder.Services.AddDistributedMemoryCache(); 
 builder.Services.AddControllersWithViews();
 // Load JWT settings from configuration
 var jwtSettings = builder.Configuration.GetSection("Jwt");
@@ -17,16 +17,13 @@ var jwtAudience = jwtSettings["Audience"];
 // Configure services
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-builder.Services.AddScoped<JwtService>(); // Use the correct service name you created
+builder.Services.AddScoped<JwtService>(); 
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-// var jwtIssuer = builder.Configuration["Jwt:Issuer"];
-// var jwtAudience = builder.Configuration["Jwt:Audience"];
-// Configure JWT authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -46,7 +43,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
-// Configure middleware pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -59,7 +55,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication();  // 🔐 Enable JWT Authentication
+app.UseAuthentication();  
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -59,11 +59,11 @@ public IActionResult Dashboard()
         return RedirectToAction("Login", "Farmer");
 
     var allOtherProducts = _context.Products
-        .Where(p => p.FarmerId != farmer.Id)  // Products from other farmers
+        .Where(p => p.FarmerId != farmer.Id)  
         .ToList();
 
     var myProducts = _context.Products
-        .Where(p => p.FarmerId == farmer.Id)  // Logged-in farmer's products
+        .Where(p => p.FarmerId == farmer.Id)  
         .ToList();
 
     var model = Tuple.Create<IEnumerable<Product>, IEnumerable<Product>>(allOtherProducts, myProducts);
@@ -71,33 +71,6 @@ public IActionResult Dashboard()
 }
 
 
-//    public IActionResult Dashboard()
-// {
-//     var farmerUsername = HttpContext.Session.GetString("FarmerUsername");
-//     if (string.IsNullOrEmpty(farmerUsername))
-//     {
-//         return RedirectToAction("Login");
-//     }
-
-//     var farmer = _context.Farmers.FirstOrDefault(f => f.Username == farmerUsername);
-//     if (farmer == null)
-//     {
-//         return RedirectToAction("Login");
-//     }
-
-//     var products = _context.Products
-//         .Where(p => p.FarmerId == farmer.Id) // assuming Product has FarmerId FK
-//         .ToList();
-
-//     var model = new FarmerDashboardViewModel
-//     {
-//         FullName = farmer.FullName,
-//         Username = farmer.Username,
-//         Products = products
-//     };
-
-//     return View(model);
-// }
 
  public IActionResult Create()
         {
@@ -121,7 +94,7 @@ public IActionResult Create(FarmerCreateViewModel model)
         return RedirectToAction(nameof(Index));
     }
 
-    return View(model); // FIX: return the same ViewModel type
+    return View(model); 
 }
 
 
@@ -144,7 +117,6 @@ public IActionResult Create(FarmerCreateViewModel model)
             return View(viewModel);
         }
 
-        // POST: /Farmer/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(FarmerEditViewModel model)

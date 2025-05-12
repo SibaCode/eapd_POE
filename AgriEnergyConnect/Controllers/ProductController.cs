@@ -33,10 +33,8 @@ namespace AgriEnergyConnect.Controllers
         {
              var farmerUsername = HttpContext.Session.GetString("FarmerUsername");
 
-        // Check if the user is a farmer
         if (string.IsNullOrEmpty(farmerUsername))
         {
-            // If not a farmer, redirect to the employee dashboard or another page
             return RedirectToAction("Dashboard", "Employee"); // Or any page you'd prefer
         }
 
@@ -57,7 +55,7 @@ public IActionResult Create(Product model)
 
     if (ModelState.IsValid)
     {
-        model.FarmerId = farmer.Id; // 🔥 only set FarmerId, don't worry about model.Farmer
+        model.FarmerId = farmer.Id; 
         _context.Products.Add(model);
         _context.SaveChanges();
 
@@ -114,7 +112,7 @@ public IActionResult Delete(int id)
     if (product == null)
         return NotFound();
 
-    return View(product);  // Pass the product to the view
+    return View(product);  
 }
 
 // POST: /Product/DeleteConfirmed/5
