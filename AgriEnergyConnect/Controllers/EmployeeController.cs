@@ -73,7 +73,6 @@ namespace AgriEnergyConnect.Controllers
                 _context.Employees.Add(employee);
                 _context.SaveChanges();
 
-                TempData["SuccessMessage"] = "Registration successful! Please log in.";
                 return RedirectToAction("Login");
             }
 

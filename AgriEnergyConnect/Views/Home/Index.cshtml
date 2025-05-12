@@ -1,8 +1,40 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@* @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["HideNavbar"] = true;
+} *@
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="container mt-4">
+    <!-- Welcome Banner -->
+    <div class="jumbotron text-white bg-success rounded p-4 mb-5 shadow-sm">
+        <h1 class="display-5 fw-bold">Welcome to Agri-Energy Connect</h1>
+        <p class="lead">Connect. Grow. Sell. Empowering local farmers through digital innovation and sustainable energy practices.</p>
+    </div>
+
+    <!-- Feature Tiles -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">➕Farmer </h5>
+                    <a href="/Farmer/Login" class="btn btn-success">Login here</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">➕ Employee Login</h5>
+                    <a href="/Employee/Login" class="btn btn-success">LOgin here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+   
 </div>

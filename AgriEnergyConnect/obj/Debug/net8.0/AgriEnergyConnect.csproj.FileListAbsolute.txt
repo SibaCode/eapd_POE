@@ -157,3 +157,13 @@
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/obj/Debug/net8.0/AgriEnergyConnect.pdb
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/obj/Debug/net8.0/AgriEnergyConnect.genruntimeconfig.cache
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/obj/Debug/net8.0/ref/AgriEnergyConnect.dll
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/publish/publish/web.config
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/publish/web.config
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/publish/AgriEnergyConnect.deps.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/publish/AgriEnergyConnect.runtimeconfig.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/publish/appsettings.Development.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/publish/appsettings.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/publish/publish/AgriEnergyConnect.deps.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/publish/publish/AgriEnergyConnect.runtimeconfig.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/publish/publish/appsettings.Development.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/publish/publish/appsettings.json

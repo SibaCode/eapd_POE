@@ -1,0 +1,258 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4 {
+  color: #000000;
+  font-weight: 600;
+}
+
+a {
+  color: #FF6A13;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #d45b00;
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #000000;
+}
+
+label {
+  font-size: 1rem;
+  color: #000000;
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="date"], textarea, select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+input[type="submit"], .btn {
+  background-color: #FF6A13;
+  color: #ffffff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover, .btn:hover {
+  background-color: #d45b00;
+}
+.alert {
+  position: relative;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+.alert-success {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.alert-danger {
+  background-color: #ffffff;
+  color: #FF6A13;
+}
+
+.navbar {
+  background-color: #000000;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a {
+  color: #ffffff;
+  font-size: 1.1rem;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.navbar a:hover {
+  background-color: #FF6A13;
+}
+
+.card {
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.card-header {
+  background-color: #FF6A13;
+  color: #ffffff;
+  padding: 15px;
+  font-size: 1.2rem;
+}
+
+.card-body {
+  padding: 20px;
+  color: #000000;
+}
+
+.card-footer {
+  background-color: #ffffff;
+  padding: 15px;
+  text-align: center;
+}
+
+.card-footer a {
+  color: #fff;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table th, .table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #000000;
+}
+
+.table th {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.table td {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.table tbody tr:hover {
+  background-color: #FF6A13;
+  color: #ffffff;
+}
+
+.pagination a {
+  color: #FF6A13;
+  padding: 10px;
+  margin: 0 5px;
+  border: 1px solid #FF6A13;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.pagination a:hover {
+  background-color: #FF6A13;
+  color: #ffffff;
+}
+
+.footer {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.footer a {
+  color: #FF6A13;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .table, .card {
+    width: 100%;
+  }
+
+  .container {
+    padding: 15px;
+  }
+}
+.jumbotron {
+  background: linear-gradient(135deg, #4CAF50, #388E3C, #2E7D32);
+}
+.jumbotron-admin {
+  background: linear-gradient(135deg, #3fb83b, #2c5364, #2E7D32)
+}
+.display-5 {
+  font-size: calc(1.425rem + 2.1vw);
+  font-weight: 300;
+  line-height: 1.2;
+  color: white;
+}
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+.btn-delete {
+  color: #fff;
+  background-color: #000000;
+  border-color: #000000;
+}
+.btn-edit {
+  color: #fff;
+  background-color: #FF6A13;
+  border-color: #FF6A13;
+}
+.btn-disabled {
+  background-color: #ffe0cc; /* Light faded orange */
+  color: #ffffff;
+  pointer-events: none;
+  cursor: not-allowed;
+  border: 1px solid #ffa366;
+}
