@@ -7,12 +7,21 @@ Agri-Energy Connect is a **prototype platform** built with **ASP.NET Core MVC** 
 ---
 Pre-added Credentials
 Farmer
-Username - Farmer1
-Password - F@rmer1
+---
+| Username          | Password |
+|-------------------|-------------|
+| Farmer1           | F@rmer1 |
 
 Employee
-Username - Admin1
-Password - @admin
+-----
+| Username          | Password |
+|-------------------|-------------|
+| Admin1           | @admin |
+
+Link :
+📌 Website : [github.com/zuzakuhle](https://github.com/your-profile)
+📌 GitHub: [click here ]([https://github.com/your-profile](https://github.com/SibaCode/eapd_POE/tree/main))
+
 ## 👤 User Roles and What They Can Do
 
 ### 🧑‍🌾 Farmer
@@ -203,9 +212,6 @@ if (string.IsNullOrEmpty(farmerUsername))
 
 ## 📸 I have deployed the website
 
-Link :
-📌 Website : [github.com/zuzakuhle](https://github.com/your-profile)
-📌 GitHub: [github.com/zuzakuhle](https://github.com/your-profile)
 - Logging in as Farmer
 - Adding a product
 - Browsing products from others
@@ -214,7 +220,6 @@ Link :
 
 ---
 
-📌 GitHub: [github.com/zuzakuhle](https://github.com/your-profile)
 
 ---
 
