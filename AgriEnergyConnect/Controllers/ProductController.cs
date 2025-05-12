@@ -23,26 +23,48 @@ namespace AgriEnergyConnect.Controllers
         // GET: /Product/Create
         public IActionResult Create()
         {
+             var farmerUsername = HttpContext.Session.GetString("FarmerUsername");
+
+        // Check if the user is a farmer
+        if (string.IsNullOrEmpty(farmerUsername))
+        {
+            // If not a farmer, redirect to the employee dashboard or another page
+            return RedirectToAction("Dashboard", "Employee"); // Or any page you'd prefer
+        }
+
             return View();
         }
 
         // POST: /Product/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Products.Add(product);
-                _context.SaveChanges();
-                TempData["SuccessMessage"] = "Product created successfully!";
-                return RedirectToAction(nameof(Index));
-            }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Create(Product model)
+    {
+        // Retrieve the Farmer's username from the session
+        var farmerUsername = HttpContext.Session.GetString("FarmerUsername");
 
-            TempData["ErrorMessage"] = "Failed to create product.";
-            return View(product);
+        // Ensure the logged-in user is a farmer
+        if (string.IsNullOrEmpty(farmerUsername))
+        {
+            return RedirectToAction("Dashboard", "Employee");
         }
 
+        if (ModelState.IsValid)
+        {
+            // Find the farmer from the database
+            var farmer = _context.Farmers.FirstOrDefault(f => f.Username == farmerUsername);
+            if (farmer != null)
+            {
+                model.FarmerId = farmer.Id; // Link the product to the farmer
+                _context.Products.Add(model); // Add the new product to the database
+                _context.SaveChanges(); // Save the changes
+                TempData["SuccessMessage"] = "Product created successfully!";
+                return RedirectToAction("Index"); // Redirect to the product list or another page
+            }
+        }
+
+        return View(model); // Return the create view with errors if something went wrong
+    }
         // GET: /Product/Edit/5
         public IActionResult Edit(int id)
         {

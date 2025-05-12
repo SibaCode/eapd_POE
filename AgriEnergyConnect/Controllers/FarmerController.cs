@@ -23,7 +23,11 @@ namespace AgriEnergyConnect.Controllers
         {
             return View(new FarmerLoginViewModel());
         }
-
+public IActionResult Index()
+{
+    var farmers = _context.Farmers.ToList();
+    return View(farmers);
+}
      [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Login(FarmerLoginViewModel model)
