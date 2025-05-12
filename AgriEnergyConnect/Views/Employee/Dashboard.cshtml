@@ -4,28 +4,43 @@
     ViewData["Title"] = "Employee Dashboard";
 }
 
-<h2>Welcome to the Employee Dashboard</h2>
-<h2>Welcome, @Model.LoggedInEmployeeName!</h2>
-
-<div class="row">
-    <!-- Users Tile -->
-    <div class="col-md-6 col-lg-3 mb-4">
-        <div class="card text-white bg-primary">
-            <div class="card-body">
-                <h5 class="card-title">Total Farmers</h5>
-                <p class="card-text">@Model.TotalFarmers</p>
-                <a href="@Url.Action("Index", "Farmer")" class="btn btn-light">View Farmers</a>
-            </div>
-        </div>
+<div class="container mt-4">
+    <div class="jumbotron text-white bg-dark rounded p-4 mb-4">
+        <h1 class="display-5">Welcome, @Model.LoggedInEmployeeName!</h1>
+        <p class="lead">You are now in the Agri-Energy Connect employee portal. Here, you can manage farmers, oversee products, and support the mission of sustainable agriculture.</p>
     </div>
 
-    <!-- Products Tile -->
-    <div class="col-md-6 col-lg-3 mb-4">
-        <div class="card text-white bg-success">
-            <div class="card-body">
-                <h5 class="card-title">Total Products</h5>
-                <p class="card-text">@Model.TotalProducts</p>
-                <a href="@Url.Action("Index", "Product")" class="btn btn-light">View Products</a>
+    <div class="row">
+        <!-- Farmers Tile -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-primary shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Total Farmers</h5>
+                    <p class="card-text fs-4 fw-bold">@Model.TotalFarmers</p>
+                    <a href="@Url.Action("Index", "Farmer")" class="btn btn-light btn-sm">Manage Farmers</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Tile -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-success shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Total Products</h5>
+                    <p class="card-text fs-4 fw-bold">@Model.TotalProducts</p>
+                    <a href="@Url.Action("Index", "Product")" class="btn btn-light btn-sm">Manage Products</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Future Tile (Optional) -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card text-white bg-secondary shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Energy Deals (Coming Soon)</h5>
+                    <p class="card-text">Manage renewable energy collaborations.</p>
+                    <button class="btn btn-light btn-sm" disabled>Coming Soon</button>
+                </div>
             </div>
         </div>
     </div>

@@ -25,10 +25,16 @@
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Design.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Extensions.DependencyModel.dll
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Extensions.Hosting.Abstractions.dll
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Extensions.ObjectPool.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Extensions.WebEncoders.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Identity.Client.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Identity.Client.Extensions.Msal.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
@@ -55,7 +61,9 @@
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/System.Memory.Data.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/System.Runtime.Caching.dll
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/System.Security.Cryptography.Pkcs.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/System.Security.Cryptography.ProtectedData.dll
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/System.Security.Cryptography.Xml.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/System.Security.Permissions.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/System.Windows.Extensions.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.resources.dll
@@ -120,6 +128,7 @@
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/runtimes/unix/lib/net6.0/System.Drawing.Common.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Drawing.Common.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Runtime.Caching.dll
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/obj/Debug/net8.0/AgriEnergyConnect.csproj.AssemblyReference.cache
@@ -148,12 +157,3 @@
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/obj/Debug/net8.0/AgriEnergyConnect.pdb
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/obj/Debug/net8.0/AgriEnergyConnect.genruntimeconfig.cache
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/obj/Debug/net8.0/ref/AgriEnergyConnect.dll
-/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.dll
-/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll
-/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Extensions.Hosting.Abstractions.dll
-/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll
-/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Extensions.ObjectPool.dll
-/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/Microsoft.Extensions.WebEncoders.dll
-/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/System.Security.Cryptography.Pkcs.dll
-/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/System.Security.Cryptography.Xml.dll
-/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll

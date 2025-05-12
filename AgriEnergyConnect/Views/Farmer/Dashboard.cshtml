@@ -1,19 +1,56 @@
-@model AgriEnergyConnect.Models.FarmerDashboardViewModel
+@model Tuple<IEnumerable<AgriEnergyConnect.Models.Product>, IEnumerable<AgriEnergyConnect.Models.Product>>
 
-<h2>Welcome, @Model.FullName!</h2>
+@{
+    var allProducts = Model.Item1; // All products from other farmers
+    ViewData["Title"] = "Farmer Dashboard";
+}
 
-<div class="row">
-    <!-- Farmers Tile -->
-    
+<div class="container mt-4">
+    <!-- Welcome Section -->
+    <div class="jumbotron text-white bg-success rounded p-4 mb-4">
+        <h1 class="display-5">Welcome to Agri-Energy Connect</h1>
+        <p class="lead">Connect. Grow. Sell. Empowering local farmers through digital innovation and sustainable energy practices.</p>
+    </div>
 
-    <!-- Products Tile -->
-    <div class="col-md-6 col-lg-3 mb-4">
-        <div class="card text-white bg-success">
-            <div class="card-body">
-                <h5 class="card-title">Total Products</h5>
-                <p class="card-text">@Model.TotalProducts</p>
+    <!-- Action Cards -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h4>Add Your First Product</h4>
+                    <p>Start showcasing your farm's produce to the Agri-Energy community and connect with potential buyers.</p>
+                    <a href="/Product/Create" class="btn btn-primary">+ Add Product</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mt-3 mt-md-0">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h4>Update Your Profile</h4>
+                    <p>Keep your information current so buyers and partners can reach out and learn more about your farm.</p>
+                    <a href="/Farmer/EditProfile" class="btn btn-outline-success">Update Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional: Marketplace -->
+    <div class="row">
+        <div class="col">
+            <h3>Marketplace – Products from Other Farmers</h3>
+            <div class="list-group">
+                @foreach (var product in allProducts)
+                {
+                    <div class="list-group-item">
+                        <h5>@product.Name</h5>
+                        <p>Category: @product.Category</p>
+                        <p>Price: R @product.Price</p>
+                        <p>Available: @(product.InStock ? "Yes" : "No")</p>
+                        <p><small>Produced on: @product.ProductionDate.ToShortDateString()</small></p>
+                    </div>
+                }
             </div>
         </div>
     </div>
 </div>
-

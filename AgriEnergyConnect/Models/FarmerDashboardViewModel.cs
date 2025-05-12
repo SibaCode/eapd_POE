@@ -3,10 +3,10 @@ namespace AgriEnergyConnect.Models
 {
    public class FarmerDashboardViewModel
 {
-         public int TotalFarmers { get; set; }
-    public int TotalProducts { get; set; }
-    
+   public string FullName { get; set; }
+    public string Username { get; set; }
 
+    public List<Product> Products { get; set; } = new List<Product>();
 
 }
 

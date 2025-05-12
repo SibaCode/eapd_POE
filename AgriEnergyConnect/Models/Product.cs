@@ -18,6 +18,7 @@ public class Product
         public DateTime ProductionDate { get; set; }
 
     public int FarmerId { get; set; }
+    
 }
 
 

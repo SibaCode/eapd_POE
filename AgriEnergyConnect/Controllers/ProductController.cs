@@ -36,35 +36,28 @@ namespace AgriEnergyConnect.Controllers
         }
 
         // POST: /Product/Create
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public IActionResult Create(Product model)
+   
+[HttpPost]
+[ValidateAntiForgeryToken]
+public IActionResult Create(Product model)
+{
+    var farmerUsername = HttpContext.Session.GetString("FarmerUsername");
+    if (string.IsNullOrEmpty(farmerUsername)) return RedirectToAction("Login", "Farmer");
+
+    var farmer = _context.Farmers.FirstOrDefault(f => f.Username == farmerUsername);
+    if (farmer == null) return RedirectToAction("Login", "Farmer");
+
+    if (ModelState.IsValid)
     {
-        // Retrieve the Farmer's username from the session
-        var farmerUsername = HttpContext.Session.GetString("FarmerUsername");
+        model.FarmerId = farmer.Id; // 🔥 only set FarmerId, don't worry about model.Farmer
+        _context.Products.Add(model);
+        _context.SaveChanges();
 
-        // Ensure the logged-in user is a farmer
-        if (string.IsNullOrEmpty(farmerUsername))
-        {
-            return RedirectToAction("Dashboard", "Employee");
-        }
-
-        if (ModelState.IsValid)
-        {
-            // Find the farmer from the database
-            var farmer = _context.Farmers.FirstOrDefault(f => f.Username == farmerUsername);
-            if (farmer != null)
-            {
-                model.FarmerId = farmer.Id; // Link the product to the farmer
-                _context.Products.Add(model); // Add the new product to the database
-                _context.SaveChanges(); // Save the changes
-                TempData["SuccessMessage"] = "Product created successfully!";
-                return RedirectToAction("Index"); // Redirect to the product list or another page
-            }
-        }
-
-        return View(model); // Return the create view with errors if something went wrong
+        return RedirectToAction("Dashboard", "Farmer");
     }
+
+    return View(model);
+}
         // GET: /Product/Edit/5
         public IActionResult Edit(int id)
         {
