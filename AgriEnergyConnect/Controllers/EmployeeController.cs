@@ -1,7 +1,8 @@
-
 using Microsoft.AspNetCore.Mvc;
 using AgriEnergyConnect.Models;
 using AgriEnergyConnect.Data;
+using AgriEnergyConnect.Services;
+using Microsoft.AspNetCore.Http;
 using BCrypt.Net;
 
 namespace AgriEnergyConnect.Controllers
@@ -15,110 +16,109 @@ namespace AgriEnergyConnect.Controllers
             _context = context;
         }
 
-        // GET: /Employee
-        public IActionResult Index()
+        // GET: /Employee/Login
+        [HttpGet]
+        public IActionResult Login()
         {
-            var employees = _context.Employees.ToList();
-            return View(employees);
+            return View(new LoginViewModel());
         }
-        public IActionResult Dashboard()
-        {
-            return View();
-        }
-        // GET: /Employee/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-        public IActionResult Register()
-        {
-            return View();
-        }
-                public IActionResult Login()
-        {
-            return View();
-        }
-        // POST: /Employee/Create
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Employee employee)
+        public IActionResult Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                employee.Password = BCrypt.Net.BCrypt.HashPassword(employee.Password);
-                _context.Employees.Add(employee);
-                _context.SaveChanges();
-                TempData["SuccessMessage"] = "Employee created successfully!";
-                return RedirectToAction(nameof(Index));
+                var employee = _context.Employees
+                                    .FirstOrDefault(e => e.Username == model.Username);
+
+                if (employee != null && BCrypt.Net.BCrypt.Verify(model.Password, employee.PasswordHash))
+                {
+                    // Store the username in the session or claims
+                    HttpContext.Session.SetString("Username", employee.Username);
+
+                    // Optionally, you can store the employee ID or other info
+                    HttpContext.Session.SetString("FullName", employee.FullName);
+
+                    // Redirect to the Dashboard
+                    return RedirectToAction("Dashboard", "Employee");
+                }
+
+                ModelState.AddModelError(string.Empty, "Invalid username or password.");
             }
 
-            TempData["ErrorMessage"] = "Failed to create employee.";
+            return View(model); // Return the view with error if credentials are invalid
+        }
+
+
+        // GET: /Employee/Register
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View(new Employee());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Register(Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_context.Employees.Any(e => e.Username == employee.Username))
+                {
+                    ModelState.AddModelError("Username", "Username already exists.");
+                    return View(employee);
+                }
+
+                employee.PasswordHash = BCrypt.Net.BCrypt.HashPassword(employee.PasswordHash);
+                _context.Employees.Add(employee);
+                _context.SaveChanges();
+
+                TempData["SuccessMessage"] = "Registration successful! Please log in.";
+                return RedirectToAction("Login");
+            }
+
             return View(employee);
         }
 
-        // GET: /Employee/Edit/5
-        public IActionResult Edit(int id)
-        {
-            var employee = _context.Employees.Find(id);
-            if (employee == null)
-                return NotFound();
-
-            var viewModel = new EmployeeEditViewModel
-    {
-        Id = employee.Id,
-        FullName = employee.FullName,
-        Username = employee.Username
-    };
-
-    return View(viewModel);
-        }
-
-        // POST: /Employee/Edit/5
-[HttpPost]
-[ValidateAntiForgeryToken]
-public IActionResult Edit(EmployeeEditViewModel model)
+       public IActionResult Dashboard()
 {
-    if (ModelState.IsValid)
+    // Retrieve the username or full name from the session
+    var username = HttpContext.Session.GetString("Username");
+    var fullName = HttpContext.Session.GetString("FullName");
+
+    // Check if username exists
+    if (string.IsNullOrEmpty(username))
     {
-        var existing = _context.Employees.Find(model.Id);
-        if (existing == null)
-            return NotFound();
-
-        existing.FullName = model.FullName;
-        existing.Username = model.Username;
-
-        _context.SaveChanges();
-        TempData["SuccessMessage"] = "Employee updated successfully!";
-        return RedirectToAction(nameof(Index));
+        // Handle case when session is empty or invalid
+        return RedirectToAction("Login", "Employee");
     }
 
-    TempData["ErrorMessage"] = "Failed to update employee.";
-    return View(model);
+    // Retrieve employee details from the database
+    var employee = _context.Employees.FirstOrDefault(e => e.Username == username);
+    if (employee == null)
+    {
+        // Handle case if employee is not found
+        return RedirectToAction("Login", "Employee");
+    }
+
+    // Create the DashboardViewModel and pass it to the view
+    var dashboardData = new DashboardViewModel
+    {
+        TotalFarmers = _context.Farmers.Count(),
+        TotalProducts = _context.Products.Count(),
+        LoggedInEmployeeName = fullName ?? employee.FullName // Use full name from session if available, else fallback to DB
+    };
+
+    return View(dashboardData);
 }
 
-        // GET: /Employee/Delete/5
-        public IActionResult Delete(int id)
+
+
+        public IActionResult Logout()
         {
-            var employee = _context.Employees.Find(id);
-            if (employee == null)
-                return NotFound();
-
-            return View(employee);
-        }
-
-        // POST: /Employee/DeleteConfirmed/5
-        [HttpPost, ActionName("DeleteConfirmed")]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
-        {
-            var employee = _context.Employees.Find(id);
-            if (employee == null)
-                return NotFound();
-
-            _context.Employees.Remove(employee);
-            _context.SaveChanges();
-            TempData["SuccessMessage"] = "Employee deleted successfully!";
-            return RedirectToAction(nameof(Index));
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
         }
     }
 }

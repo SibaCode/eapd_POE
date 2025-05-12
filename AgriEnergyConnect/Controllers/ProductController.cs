@@ -84,33 +84,31 @@ namespace AgriEnergyConnect.Controllers
             return View(updatedProduct);
         }
 
-        // GET: /Product/Delete/5
-        public IActionResult Delete(int id)
-        {
-            var product = _context.Products.Find(id);
-            if (product == null)
-                return NotFound();
+   // GET: /Product/Delete/5
+public IActionResult Delete(int id)
+{
+    var product = _context.Products.Find(id);
+    if (product == null)
+        return NotFound();
 
-            return View(product);
-        }
+    return View(product);  // Pass the product to the view
+}
 
-      // POST: /Product/DeleteConfirmed/5
+// POST: /Product/DeleteConfirmed/5
 [HttpPost, ActionName("DeleteConfirmed")]
 [ValidateAntiForgeryToken]
 public IActionResult DeleteConfirmed(int id)
 {
     var product = _context.Products.Find(id);
     if (product == null)
-    {
         return NotFound();
-    }
 
     _context.Products.Remove(product);
     _context.SaveChanges();
-
     TempData["SuccessMessage"] = "Product deleted successfully!";
     return RedirectToAction(nameof(Index));
 }
+
 
     }
 }

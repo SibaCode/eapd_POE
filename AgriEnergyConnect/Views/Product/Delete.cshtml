@@ -1,18 +1,21 @@
+
 @model AgriEnergyConnect.Models.Product
 
 @{
     ViewData["Title"] = "Delete Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Delete Product</h2>
 
 <div class="alert alert-warning">
-    Are you sure you want to delete <strong>@Model.FullName</strong>?
+    Are you sure you want to delete <strong>@Model.Name</strong>?
 </div>
 
 <form asp-action="DeleteConfirmed" method="post">
-    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="Id" /> <!-- Hidden field to pass the product Id -->
+ 
+
     <button type="submit" class="btn btn-danger">Yes, Delete</button>
     <a asp-action="Index" class="btn btn-secondary">Cancel</a>
 </form>
-

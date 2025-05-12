@@ -1,39 +1,31 @@
+@model AgriEnergyConnect.Models.DashboardViewModel
+
 @{
-    ViewData["Title"] = "Dashboard";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Employee Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="mb-4">Welcome to AgriEnergy Connect</h1>
+<h2>Welcome to the Employee Dashboard</h2>
+<h2>Welcome, @Model.LoggedInEmployeeName!</h2>
 
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card shadow-sm border-0">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Farmers</h5>
-                    <p class="card-text">Manage all registered farmers</p>
-                    <a href="/Farmer/Index" class="btn btn-orange">View Farmers</a>
-                </div>
+<div class="row">
+    <!-- Users Tile -->
+    <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h5 class="card-title">Total Farmers</h5>
+                <p class="card-text">@Model.TotalFarmers</p>
+                <a href="@Url.Action("Index", "Farmer")" class="btn btn-light">View Farmers</a>
             </div>
         </div>
+    </div>
 
-        <div class="col-md-4 mt-4 mt-md-0">
-            <div class="card shadow-sm border-0">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Employees</h5>
-                    <p class="card-text">View and manage employees</p>
-                    <a href="/Employee/Index" class="btn btn-orange">View Employees</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-4 mt-md-0">
-            <div class="card shadow-sm border-0">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Products</h5>
-                    <p class="card-text">Browse marketplace products</p>
-                    <a href="/Product/Index" class="btn btn-orange">View Products</a>
-                </div>
+    <!-- Products Tile -->
+    <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card text-white bg-success">
+            <div class="card-body">
+                <h5 class="card-title">Total Products</h5>
+                <p class="card-text">@Model.TotalProducts</p>
+                <a href="@Url.Action("Index", "Product")" class="btn btn-light">View Products</a>
             </div>
         </div>
     </div>
