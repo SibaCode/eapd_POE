@@ -59,16 +59,17 @@ public IActionResult Dashboard()
         return RedirectToAction("Login", "Farmer");
 
     var allOtherProducts = _context.Products
-        .Where(p => p.FarmerId != farmer.Id)
+        .Where(p => p.FarmerId != farmer.Id)  // Products from other farmers
         .ToList();
 
     var myProducts = _context.Products
-        .Where(p => p.FarmerId == farmer.Id)
+        .Where(p => p.FarmerId == farmer.Id)  // Logged-in farmer's products
         .ToList();
 
     var model = Tuple.Create<IEnumerable<Product>, IEnumerable<Product>>(allOtherProducts, myProducts);
     return View(model);
 }
+
 
 //    public IActionResult Dashboard()
 // {

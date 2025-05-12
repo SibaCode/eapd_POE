@@ -2,6 +2,7 @@
 
 @{
     var allProducts = Model.Item1; // All products from other farmers
+    var myProducts = Model.Item2;  // Logged-in farmer's products
     ViewData["Title"] = "Farmer Dashboard";
 }
 
@@ -18,7 +19,7 @@
             <div class="card h-100 shadow-sm border-0">
                 <div class="card-body">
                     <h5 class="card-title">➕ Add Your Product</h5>
-                    <p class="card-text">Showcase your produce and connect with locak farmers.</p>
+                    <p class="card-text">Showcase your produce and connect with local farmers.</p>
                     <a href="/Product/Create" class="btn btn-success">Add Product</a>
                 </div>
             </div>
@@ -37,15 +38,33 @@
                 <div class="card-body">
                     <h5 class="card-title">🌾 Visit Marketplace</h5>
                     <p class="card-text">Browse products from other farmers in your network.</p>
-                    <a  class="btn btn-disabled" aria-disabled="true" onclick="return false;">Coming Soon</a>
+                    <a class="btn btn-disabled" aria-disabled="true" onclick="return false;">Coming Soon</a>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- My Products Section -->
+    <h3 id="my-products" class="mb-4 text-dark">🌾 Your Products</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var product in myProducts)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-success fw-semibold">@product.Name</h5>
+                        <p class="mb-1"><strong>Category:</strong> @product.Category</p>
+                        <p class="mb-1"><strong>Price:</strong> R @product.Price</p>
+                        <p class="mb-1"><strong>Available:</strong> @(product.InStock ? "✅ In Stock" : "❌ Out of Stock")</p>
+                        <p class="text-muted"><small>Produced on: @product.ProductionDate.ToShortDateString()</small></p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
     <!-- Marketplace Section -->
     <h3 id="marketplace" class="mb-4 text-dark">🌾 Explore Products from Local Farmers</h3>
-
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach (var product in allProducts)
         {

@@ -29,7 +29,7 @@
                 <ul class="navbar-nav ms-auto">
                     @if (Context.Session.GetString("FarmerUsername") != null)
                     {
-                        <li class="nav-item"><a class="nav-link" href="/Farmer/Dashboard">Profile</a></li>
+                        @* <li class="nav-item"><a class="nav-link" href="/Farmer/Dashboard">Profile</a></li> *@
                         <li class="nav-item"><a class="nav-link" href="/Product/Index">Products</a></li>
                         <li class="nav-item"><a class="nav-link" href="/Farmer/Logout">Logout</a></li>
                     }

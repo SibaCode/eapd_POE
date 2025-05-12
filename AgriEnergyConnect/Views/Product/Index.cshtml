@@ -3,10 +3,9 @@
 @{
     ViewData["Title"] = "Product List";
     var searchQuery = Context.Request.Query["search"];
-    var isLoggedIn = Context.Session.GetString("FarmerUsername") != null;
 }
 
-<h2 class="mb-4">Product List</h2>
+<h2>Product List</h2>
 
 <!-- Search Form -->
 <form method="get" class="row mb-4">
@@ -14,21 +13,26 @@
         <input type="text" name="search" class="form-control" placeholder="Search by product name" value="@searchQuery" />
     </div>
     <div class="col-md-4">
-        <button type="submit" class="btn btn-primary w-100">Search</button>
+        <button type="submit" class="btn btn-primary">Search</button>
     </div>
 </form>
 
 @if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
 }
 
 @if (TempData["ErrorMessage"] != null)
 {
-    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
 }
 
-@if (isLoggedIn)
+
+     @if (Context.Session.GetString("FarmerUsername") != null)
 {
     <a href="@Url.Action("Create")" class="btn btn-success mb-4">➕ Create New Product</a>
 }
@@ -46,11 +50,12 @@
                     <p class="mb-1"><strong>Available:</strong> @(product.InStock ? "✅ In Stock" : "❌ Out of Stock")</p>
                     <p class="text-muted"><small>Produced on: @product.ProductionDate.ToShortDateString()</small></p>
                 </div>
-                @if (isLoggedIn)
+                    @if (Context.Session.GetString("FarmerUsername") != null)
                 {
                     <div class="card-footer bg-transparent border-0 d-flex justify-content-between">
-                        <a href="@Url.Action("Edit", new { id = product.Id })" class="btn btn-sm btn-outline-primary">Edit</a>
-                        <a href="@Url.Action("Delete", new { id = product.Id })" class="btn btn-sm btn-outline-danger">Delete</a>
+
+                        <a href="@Url.Action("Edit", new { id = product.Id })" class="btn btn-edit">Edit</a>
+                        <a href="@Url.Action("Delete", new { id = product.Id })" class="btn btn-delete">Delete</a>
                     </div>
                 }
             </div>
