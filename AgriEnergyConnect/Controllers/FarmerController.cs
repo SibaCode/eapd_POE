@@ -49,7 +49,7 @@ public IActionResult Index()
 
 
 
-        public IActionResult Dashboard()
+       public IActionResult Dashboard()
 {
     var farmerUsername = HttpContext.Session.GetString("FarmerUsername");
     if (string.IsNullOrEmpty(farmerUsername))
@@ -58,18 +58,25 @@ public IActionResult Index()
     }
 
     var farmer = _context.Farmers.FirstOrDefault(f => f.Username == farmerUsername);
+    if (farmer == null)
+    {
+        return RedirectToAction("Login");
+    }
+
+    var products = _context.Products
+        .Where(p => p.FarmerId == farmer.Id) // assuming Product has FarmerId FK
+        .ToList();
 
     var model = new FarmerDashboardViewModel
     {
-        TotalFarmers = _context.Farmers.Count(),
-        TotalProducts = _context.Products.Count(),
-        FullName = farmer?.FullName ?? "Farmer" // 👈 Assign FullName
+        FullName = farmer.FullName,
+        Username = farmer.Username,
+        Products = products
     };
 
     return View(model);
 }
-// GET: /Farmer/Create
-        public IActionResult Create()
+ public IActionResult Create()
         {
             return View();
         }

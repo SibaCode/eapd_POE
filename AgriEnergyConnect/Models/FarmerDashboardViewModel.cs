@@ -5,7 +5,7 @@ namespace AgriEnergyConnect.Models
 {
          public int TotalFarmers { get; set; }
     public int TotalProducts { get; set; }
-       public string FullName { get; set; } 
+    
 
 
 }

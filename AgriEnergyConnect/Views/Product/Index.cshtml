@@ -42,16 +42,7 @@ else
             <th>Price</th>
             <th>In Stock</th>
             <th>Production Date</th>
-            <th>
-                 @if (!string.IsNullOrEmpty(farmerUsername)) // Only show edit/delete for farmers
-                    {
-                     <th>Actions</th>
-                    }
-                    else
-                    {
-                    }
-
-            </th>
+            <th> Action </th>
             
         </tr>
     </thead>
@@ -72,8 +63,7 @@ else
                     }
                     else
                     {
-                        <!-- No edit or delete buttons for employees -->
-                        @* <span>View Only</span> *@
+                    <td>View only</td>
                     }
                 </td>
             </tr>
