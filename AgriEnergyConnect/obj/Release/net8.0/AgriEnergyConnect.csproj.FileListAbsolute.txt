@@ -172,3 +172,13 @@
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Release/net8.0/publish/publish/publish/AgriEnergyConnect.runtimeconfig.json
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Release/net8.0/publish/publish/publish/appsettings.Development.json
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Release/net8.0/publish/publish/publish/appsettings.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Release/net8.0/publish/publish/publish/publish/web.config
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Release/net8.0/publish/publish/publish/publish/AgriEnergyConnect.deps.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Release/net8.0/publish/publish/publish/publish/AgriEnergyConnect.runtimeconfig.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Release/net8.0/publish/publish/publish/publish/appsettings.Development.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Release/net8.0/publish/publish/publish/publish/appsettings.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Release/net8.0/publish/publish/publish/publish/publish/web.config
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Release/net8.0/publish/publish/publish/publish/publish/AgriEnergyConnect.deps.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Release/net8.0/publish/publish/publish/publish/publish/AgriEnergyConnect.runtimeconfig.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Release/net8.0/publish/publish/publish/publish/publish/appsettings.Development.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/bin/Release/net8.0/publish/publish/publish/publish/publish/appsettings.json

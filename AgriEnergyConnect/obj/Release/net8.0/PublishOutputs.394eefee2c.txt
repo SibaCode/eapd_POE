@@ -1,4 +1,6 @@
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/AgriEnergyConnect
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/publish/publish/publish/publish/publish/web.config
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/publish/publish/publish/publish/web.config
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/publish/publish/publish/web.config
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/publish/publish/web.config
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/publish/web.config
@@ -16,6 +18,14 @@
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/publish/publish/publish/AgriEnergyConnect.runtimeconfig.json
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/publish/publish/publish/appsettings.Development.json
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/publish/publish/publish/appsettings.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/publish/publish/publish/publish/AgriEnergyConnect.deps.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/publish/publish/publish/publish/AgriEnergyConnect.runtimeconfig.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/publish/publish/publish/publish/appsettings.Development.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/publish/publish/publish/publish/appsettings.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/publish/publish/publish/publish/publish/AgriEnergyConnect.deps.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/publish/publish/publish/publish/publish/AgriEnergyConnect.runtimeconfig.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/publish/publish/publish/publish/publish/appsettings.Development.json
+/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/publish/publish/publish/publish/publish/appsettings.json
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/AgriEnergyConnect.dll
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/AgriEnergyConnect.runtimeconfig.json
 /home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/publish/AgriEnergyConnect.pdb
