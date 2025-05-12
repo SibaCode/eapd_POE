@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using AgriEnergyConnect.Models;
 using AgriEnergyConnect.Data;
+using AgriEnergyConnect.Models;
+using Microsoft.AspNetCore.Identity;
+
 using BCrypt.Net;
-using System.Linq;
 
 namespace AgriEnergyConnect.Controllers
 {
@@ -10,48 +11,87 @@ namespace AgriEnergyConnect.Controllers
     {
         private readonly AppDbContext _context;
 
+
         public FarmerController(AppDbContext context)
         {
             _context = context;
+
         }
 
-        // GET: /Farmer
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Login()
         {
-            var farmers = _context.Farmers.ToList();
-            return View(farmers);
+            return View(new FarmerLoginViewModel());
         }
 
-        // GET: /Farmer/Dashboard
+     [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Login(FarmerLoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var farmer = _context.Farmers.FirstOrDefault(f => f.Username == model.Username);
+                if (farmer != null && BCrypt.Net.BCrypt.Verify(model.Password, farmer.PasswordHash))
+                {
+                    HttpContext.Session.SetString("FarmerUsername", farmer.Username);
+                    return RedirectToAction("Dashboard", "Farmer");
+                }
+
+                ModelState.AddModelError("", "Invalid username or password.");
+            }
+
+            return View(model);
+        }
+
+
+
         public IActionResult Dashboard()
-        {
-            return View();
-        }
+{
+    var farmerUsername = HttpContext.Session.GetString("FarmerUsername");
+    if (string.IsNullOrEmpty(farmerUsername))
+    {
+        return RedirectToAction("Login");
+    }
 
-        // GET: /Farmer/Create
+    var farmer = _context.Farmers.FirstOrDefault(f => f.Username == farmerUsername);
+
+    var model = new FarmerDashboardViewModel
+    {
+        TotalFarmers = _context.Farmers.Count(),
+        TotalProducts = _context.Products.Count(),
+        FullName = farmer?.FullName ?? "Farmer" // 👈 Assign FullName
+    };
+
+    return View(model);
+}
+// GET: /Farmer/Create
         public IActionResult Create()
         {
             return View();
         }
-
-        // POST: /Farmer/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(Farmer farmer)
+[HttpPost]
+[ValidateAntiForgeryToken]
+public IActionResult Create(FarmerCreateViewModel model)
+{
+    if (ModelState.IsValid)
+    {
+        var farmer = new Farmer
         {
-            if (ModelState.IsValid)
-            {
-                // Hash the password before saving to the database
-                farmer.Password = BCrypt.Net.BCrypt.HashPassword(farmer.Password);
-                _context.Farmers.Add(farmer);
-                _context.SaveChanges();
-                TempData["SuccessMessage"] = "Farmer created successfully!";
-                return RedirectToAction(nameof(Index));
-            }
+            Username = model.Username,
+            FullName = model.FullName,
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword(model.Password) // Hash the password
+        };
 
-            TempData["ErrorMessage"] = "Failed to create farmer.";
-            return View(farmer);
-        }
+        _context.Farmers.Add(farmer);
+        _context.SaveChanges();
+        return RedirectToAction(nameof(Index));
+    }
+
+    return View(model); // FIX: return the same ViewModel type
+}
+
+
+
 
         // GET: /Farmer/Edit/5
         public IActionResult Edit(int id)
@@ -117,5 +157,14 @@ namespace AgriEnergyConnect.Controllers
             TempData["SuccessMessage"] = "Farmer deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
+
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
+        }
+
     }
+    
 }

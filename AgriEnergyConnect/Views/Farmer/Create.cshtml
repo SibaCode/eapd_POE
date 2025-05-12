@@ -1,33 +1,26 @@
-@model AgriEnergyConnect.Models.Farmer
+@model AgriEnergyConnect.Models.FarmerCreateViewModel
 
 @{
     ViewData["Title"] = "Create Farmer";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Create Farmer</h2>
 
 <form asp-action="Create" method="post">
-    <div class="mb-3">
-        <label asp-for="FullName" class="form-label"></label>
-        <input asp-for="FullName" class="form-control" />
-        <span asp-validation-for="FullName" class="text-danger"></span>
+   <div class="form-group">
+        @Html.LabelFor(model => model.FullName)
+        @Html.TextBoxFor(model => model.FullName, new { @class = "form-control" })
     </div>
 
-    <div class="mb-3">
-        <label asp-for="Username" class="form-label"></label>
-        <input asp-for="Username" type="Username" class="form-control" />
-        <span asp-validation-for="Username" class="text-danger"></span>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Username)
+        @Html.TextBoxFor(model => model.Username, new { @class = "form-control" })
     </div>
 
-    <div class="mb-3">
-        <label asp-for="Password" class="form-label"></label>
-        <input asp-for="Password" type="password" class="form-control" />
-        <span asp-validation-for="Password" class="text-danger"></span>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password)
+        @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
     </div>
 
-    <button type="submit" class="btn btn-orange">Create</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-primary">Create</button>
 </form>
-
-

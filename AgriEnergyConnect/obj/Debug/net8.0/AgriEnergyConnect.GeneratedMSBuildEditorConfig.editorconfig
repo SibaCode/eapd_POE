@@ -46,8 +46,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbG95ZWUvUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/Views/Farmer/AddProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRmFybWVyL0FkZFByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/Views/Farmer/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRmFybWVyL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/Views/Farmer/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRmFybWVyL0Rhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/Views/Farmer/Delete.cshtml]
@@ -60,6 +68,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/Views/Farmer/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRmFybWVyL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/Views/Farmer/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRmFybWVyL0xvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/sibahle/Pictures/eapd_POE/AgriEnergyConnect/Views/Home/Index.cshtml]

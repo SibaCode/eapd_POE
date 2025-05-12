@@ -1,12 +1,17 @@
 using System.ComponentModel.DataAnnotations;
+
 namespace AgriEnergyConnect.Models
 {
-   public class Farmer
+  public class FarmerCreateViewModel
 {
-    public int Id { get; set; }
+    [Required]
     public string FullName { get; set; }
+
+    [Required]
     public string Username { get; set; }
-    public string PasswordHash { get; set; } // To be hashed later
+
+    [Required, DataType(DataType.Password)]
+    public string Password { get; set; }
 }
 
 }
